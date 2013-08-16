@@ -1,0 +1,87 @@
+SORTING APPROACHES IN VARIOUS SCENARIOS
+=======================================
+
+In general QUICKSORT is the one of the most efficient sorting algorithms 
+
+	- It sorts in O(nlogn)	
+	- Sorts in-place	
+	--> For a larger set of random integers, choose QS
+	
+QUICKSORT has its nuances; if the input array has many duplicates, QUICKSORT can run in O(n^2), and it runs the risk of
+overflowing the recursion stack.
+
+It is important to call the smaller subproblem first.
+
+
+Small set of integers: a simple implementation such as insertion sort would be easy to code and run fast.
+
+Almost sorted array: if every element is known to be at most k places from its final location, a MIN-HEAP can be
+used to get a O(nlogn) algorihtm.
+
+Integers from a small range, or a few distinct keys: use COUNTING SORT; it records for each element the 
+number of times it appears. Keep this counter either in an ARRAY, or in a BST (Key = number, Value = frequency)
+
+Array with many duplicates: Could add elements to a BST with key = element, value = list of duplicates. Then perform 
+an IN-ORDER TRAVERSAL of the tree to get the sorted order.
+
+Stability is required: Merge sort can be made to be stable. Another strategy would be to add an index as an integer 
+rank to the keys to break ties.
+
+
+SORT VARIABLE-SIZE RECORDS
+==========================
+
+Almost all sorting algorithms rely on swapping records; such an operation becomes complicated when the records are of
+variable size. Swapping is also complicated when MOVING the objects is an EXPENSIVE OPERATION (e.g. moving statues)
+
+Solution: INDIRECT SORTING
+--------------------------
+
+(1) First build an ARRAY OF POINTERS to the records
+
+(2) Sort the pointers using a COMPARE FUNCTION on the DEREFERENCED POINTERS
+
+(3) ITERATE through P, writing the dereferenced pointers
+
+SORT DATA SETS THAT DO NOT FIT IN MEMORY
+========================================
+
+We need to:
+
+(1) PARTITION THE DATA into smaller blocks that would fit in memory
+(2) SORT EACH BLOCK individually
+(3) COMBINE THE SORTED blocks
+
+OBSERVATION #1:
+--------------
+
+If a cluster of machines is available, the blocks can be sorted in parallel. Otherwise the can be read one a t time 
+into a single machine and then stored back into disk
+
+OBSERVATION #2:
+--------------
+
+If we know the distribution of the keys (e.g. uniformly distributed in a certain range), the data can be
+partitioned into contiguous sub-ranges in a FIRST PASS. Then sort individual partitions; finally, the sorted partitions 
+can be put together by simple concatenation.
+
+OBSERVATION #3:
+--------------
+
+If we do not know the underlying distribution of the keys, we can do the sorting of individual blocks, and when we
+are done with all of them, merge them (a la Merge Sort).
+
+One way to do it would be:
+
+(1) Repeatedly pick the smallest element across all the sorted files on disk
+
+(2) A MIN Heap is an ideal structure for this; we can keep doing step one inserting the read elements into a
+MIN heap; we read as many as we can fit into memory; once we have our full MIN HEAP, we dump it in order
+by calling getMin() until it is empty;
+
+(3) Alternatively we could use a BST, and then generate the sorted order each time by performing an
+IN-ORDER traversal of the tree.
+
+
+	
+	                                                                                            

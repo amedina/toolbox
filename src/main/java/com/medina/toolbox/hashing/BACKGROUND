@@ -1,0 +1,75 @@
+Hashing -- Hash Tables -- Hash Functions
+========================================
+
+Hash Tables take advantage of the fact that looking things up in an array takes constant time.
+
+The KYE IDEA of HASHING, is to represent a large object as a single number.
+
+A hash function is a mathematical function that MAPS KEYS to INTEGERS.
+
+The hash function values are used to index a hash table (array).
+
+Pragmatically,  a HASH TABLE is often the best way of maintaining a dictionary.
+
+
+HASH FUNCTION SUITABLE FOR WORDS IN A DICTIONARY
+=================================================
+
+(1) Should examine all the characters in a string/word.
+
+(2) It should give a large range of values''(3) Should not let any particular character
+to dominate the resulting code
+
+(2) Should a "ROLLING HASH FUNCTION", that is, one in which if a character is deleted 
+from the front of the string and another one is added at the end, the new hash code 
+can be computed in CONSTANT TIME
+
+
+
+
+EFFCIENT MATCHING via HASHING: RABIN-KARP ALGORITHM
+===================================================
+
+Problem: Find if string T is a substring of S
+
+(1) Compute hash function for the PATTERN string
+
+(2) Compute hash function for each m-character in the TARGET string starting 
+at position i
+
+(3) If the strings are IDENTICAL, their hash values will be equal;
+
+(4) If the strings are different then MOST CERTAINLY their hash value will be different
+
+(5) COST: n - m + 2 HASH VALUE computations
+
+CATCH: need to deal with the cost of computing the m-character hash function for all substrings of S.
+
+Decompose the computation of H(S,j) so that, once we know the value of H(S, j), we can compute 
+H(S, j + 1) with a cost of TWO multiplications, ONE subtraction, and ONE addition.
+
+
+DUPLICATE DETECTION via HASHING
+===============================
+
+(1) IS A GIVEN DOCUMENT DIFFERENT FORM ALL THE REST IN A LARGE CORPUS
+
+Hash each document D to an integer, and compare it to the hash codes of other documents. Only when there 
+is a collision, D is a possible duplicate.
+
+(2) IS PART OF THIS DOCUMENT PLAGIARIZED FROM A DOCUMENT IN A LARGE CORPUS
+
+Build a hash table of all overlapping windows (substrings) of length W in all the 
+documents in the corpus. Whenever there is a match of hash codes, there is likely a 
+common substring of length W between the documents, which can then be further investigated.
+
+For efficiency, we could retain a small but well-chosen subset of the hash codes (e.g. h % 100 == 0)
+for each document.
+
+HOW CAN WE ENSURE THAT A FILE HAS NOT CHANGED
+=============================================
+
+Compute a HASH CODE of the file. We can verify that the file has not changed later by recomputing 
+the hash code and comparing it to the one sent originally.
+
+ 

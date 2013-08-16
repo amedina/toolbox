@@ -1,0 +1,34 @@
+BACKTRACKING
+============
+ 
+ Technique to list all possible solutions for a combinatorial algorithm problem. It is a systematic way to iterate through
+ all the possible configurations of a search space:
+ 
+ (1) All possible permutations of a set of objects
+ (2) All possibe subsets
+ (3) Enumerate all spanning trees of a graph
+ (4) All the ways of partition the vertices of a graph into color classes
+ 
+ Goals:
+ 
+ (1) Generate each permutation exactly once 
+ (2) Avoid missing configurations
+ 
+ 
+ Model:
+ 
+ (1) SEARCH SOLUTION as a VECTOR a = (a1, a2, ..., an) where each element ai is selected from a finite ordered set Si.
+ 
+ (2) At each step in a BT algorithm, try to expand a partial solution a = (a1,...ak) by adding another element at the end.
+ After each extension, we need to check if the new vector corresponds to a solution; if so, record it. If not, check if the
+ partial solution can be extended. 
+ 
+ (3) BT constructs a tree of partial solutions, where each vertex corresponds to a partial solution. There is an edge 
+ between two nodes in the tree if the target node is a solution which can be reached at from the source partial solution.
+ 
+ In the tree of partial solutions, the solution space can be constructed by doing a DFS traversal.
+ 
+ 
+For cases where the solution space is too big to consider it all, there heuristic methods such as 
+Simulated Annealing.
+ 

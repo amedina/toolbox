@@ -1,0 +1,30 @@
+################ Este es un example file ########
+
+package com.medina.toolbox.strings;
+
+public class StripOutComments {
+
+	### Starts Here #######
+	
+	private final static int STATE_0 = 0;
+	
+	################### This 
+	is a
+	Multiline
+	Comment ###############
+	
+	public String cleanFileComments() throws Exception{
+		
+		String fileName = "stripComments01.txt";
+	}
+	
+	### Y
+	se Acabo
+	###
+		
+	public static void main(String[] args) {
+		
+
+	}
+
+}

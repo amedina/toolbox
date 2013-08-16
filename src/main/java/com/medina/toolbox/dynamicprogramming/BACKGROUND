@@ -1,0 +1,42 @@
+DYNAMIC PROGRAMING
+==================
+
+Algorithms for optimization require proof that always return the optimal solution.
+
+Greedy algorithms are typically efficiently but they do not guarantee optimality.
+
+Exhaustive-search algorithms do guarantee optimality but are usually prohibitely expensive to run.
+
+Dynamic Programming combines the best of both worlds.
+
+The idea behind DP is to search for all possible solutions (correctness) while storing computed
+results along the way to avoid duplicate work (efficiency).
+
+DP is a technique for efficiently implementing a recursive algorithm by storing partial results.
+
+TRICK: to determine whether the recursive algorithm we are analyzing xomputes the same sub-problems 
+over and over again. If so, storing the answers to this sub-problems in a table can lead to a very 
+efficient algorithm.
+
+(1) START with a working recursive algorithm
+
+(2) IDENTIFY repeated computations
+
+(3) Define DP-based solution
+
+OBSERVATION: DP is usually the RIGHT technique for OPTIMIZATION PROBLEMS on COMBNATORIAL OBJECTS
+that have a LEFT-TO-RIGHT ORDER among components.
+
+Ex:
+
+(1) Character Strings
+(2) Rooted trees
+(3) Polygons
+(4) INteger Sequences
+
+OBSERVATION: DP is essentially a tradeoff between space and time.
+
+TAKE HOME LESSON: Explicit caching of the results of the recursive calls provides most of the benefits
+of DP, including usually the same running time as the more elegant full solution.
+
+ 

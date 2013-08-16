@@ -1,0 +1,237 @@
+Graphs = One of the UNIFYING THEMES of Computer Science
+
+Key to solving many algorithmic problems: MODEL PROBLEMS IN TERMS OF GRAPHS
+
+**** THINK GRAPHS ***** 
+
+Becoming familiar with many different algorithmic graph problems is more important than 
+understanding the specifics of all graph algorithms
+
+Flavors of graphs:
+
+1. Undirectes vs. Directed
+
+2. Weighted vs. Unweighted
+
+3. Simple vs. Non-simple
+
+Non-simple graphs allow self-loop edges, and multi-edges.
+
+4. Sparse vs. Dense
+
+5. Cyclic vs. Acyclic
+
+A directed acyclic graph is called a DAG. DAGs arise naturally in scheduling applications. 
+An operation called TOPOLOGICAL SORTING orders the vertices of a DAG with respect to 
+precedence constraints. TOPOLOGICAL SORTING is typically the first step of algorithms on DAGs.
+
+6. Embedded vs. Topological
+
+A graph is embedded if the vertices and edges are assigned geometric positions; 
+thus, any drawing of a graph represents an embedding of the graph, which may or may 
+not have algorithmic implications.
+
+Some times the structure of a graph is defined by the geometry of its embedding.
+
+7. Implicit vs. Explicit. Implicit graphs are constructed as they are used. E.g. backtrack search.
+
+8. Labeled vs Unlabeled.
+
+DATA STRUCTURES
+===============
+
+1. Adjacency Matrix:
+
+M[i,j] = 1 iff there is an edge in G between nodes i and j, and M[i,j] = 0 if there is not one.
+
+2. Adjacency Lists
+
+Linked list to store the neighbors adjacent to each vertex.
+
+GRAPH TRAVERSALS
+================
+
+The most fundamental graph problem: traverse all its nodes and edges systematically.
+
+Mazes are naturally represented by graphs.
+
+Key idea behind graph traversals: MARK every vertex when we FIRST visit it, and keep 
+track of those vertices NOT YET EXPLLORED.
+   
+Each vertex will exist in one of three states:
+
+(1) UNDISCOVERED
+
+(2) DISCOVERED
+
+(3) PROCESSED
+
+Progress: UNDISCOVERED --> DISCOVERED --> PROCESSED
+
+Need to keep structure with DISCOVERED-BUT-NOT-YET-PROCESSED vertices
+
+1. Start: Only the source vertex for the traversal is marked as DISCOVERED.
+
+2. To mark a vertex as PROCESSED, we must explore all of its adjacent vertices.
+
+3. If an edge from vertex v goes to a UNDISCOVERED vertex, we mark it as DISCOVERED and add it
+to the list of work to be done
+
+4. If an edge from vertex v goes to a DISCOVERED vertex, we ignore it because that vertex has been 
+already placed in the list of work to be done
+
+5. If an edge from vertex v goes to a PROCESSED node, we ignore it because we don't want to repeat 
+work that has already been done.
+
+Note: each UNDIRECTED edge will be EXPLORED exactly TWICE: once for each of its end nodes discovery;
+each DIRECTED edge will be EXPLORED exactly ONCE: once for the source node discovery.
+
+BREADTH-FIRST SEARCH
+====================
+
+The PARENT array set in BFS is very useful for finding interesting paths through a graph.
+
+The PARENT relation defines a TREE OF DISCOVERY with the starting node as the root of the tree.
+
+Because vertices are discovered in order of increasing distance from the root, the DISCOVERY TREE contains 
+minimum-length paths from the root to each node.
+
+BFS runs in O(M + N) --> LINEAR TIME
+
+
+APPLICATIONS OF BFS
+===================
+
+1. Connected Components
+
+2. Two-Coloring (Bipartite checking)
+
+DEPTH-FIRST SEARCH
+==================
+
+The difference between DFS and BFS is in the order in which vertices are processed. This order depends
+completely on the DATA STRUCTURE used by each algorithm top store the DISCOVERED-BUT-NOT-PROCESSED 
+vertices.
+
+BFS --> QUEUE --> FIFO: process oldest unexplored vertices first; consequently, the traversal
+radiates slowly from the starting vertex.
+
+DFS --> STACK --> LIFO: process vertices along a path, visiting each neighbor if there is one available,
+and backtrack only when surrounded only by previously discovered vertices.
+
+DFS maintains the notion of TRAVERSAL TIME for each vertex. There is a TIME CLOCK that ticks every time
+we ENTER or EXIT a vertex.
+
+DFS can be implemented neatly RECURSIVELY, which eliminates the need for explicitly using a stack.
+
+DFS PROPERTY: Keeping the ENTRY and EXIT times provides very useful information:
+
+1. Who is an ANCESTOR? If (x ANCESTOR y), then we must ENTER x BEFORE we ENTER y; also, we must EXIT y 
+before we EXIT x.
+
+2. How many DESCENDANTS? The DIFFERENCE between the EXIT and ENTRY times for vertex v, tells us how manny 
+DESCENDANTS v has; the clock is increased on each ENTRY and on each EXIT; therefore, half the time
+difference denotes the number of descendants.
+
+
+DFS PROPERTY: Partitions the edges of an undirected graph into:
+
+1. TREE edges: DISCOVER new vertices; encoded in PARENT relation
+
+2. BACK edges: those whose other end point is an ANCESTOR of the vertex being expanded; 
+they point BACK into the tree
+
+DFS ON DIRECTED GRAPHS
+======================
+
+For directed graphs, DFS's edge labeling goes further.
+
+APPLICATIONS OF DFS:
+===================
+
+1. Find CYCLES
+
+2. TOPOLOGICAL SORTING: used on DAGs; sorts the vertices on a line such that all the directed edges go 
+from left to right.
+
+Topological Sorting can be done efficiently using DFS.  A graph is a DAG iff no BACK edges are encountered.
+Labeling the vertices in the reverse order that they were processed finds a topological sorting of a DAG.
+
+3. BICONNECTED COMPONENTS
+
+MINIMUM SPANNING TREES
+======================
+
+Always the answer when we are trying to connect points, cities, etc.
+
+An MST minimizes the total length over all possible spanning trees. 
+
+There can be more than one MST in a graph.
+
+For an unweighted graph (or a graph with all weights equal), all spanning trees are MSTs.
+
+PRIM's ALGORITHM
+================
+
+Starts from a given node, and grows the tree one node at a time, until all nodes have been included.
+
+Prim is like a SPF algorithm, but the distance associated with each node corresponds to min-weight incident 
+edge's weight.
+
+VARIATIONS OF MSTs
+==================
+
+1. MAXIMUM Spanning Tree: Negate the weights of the edges. The most negative tree is the MAXST
+
+2. Minimum PRODUCT Spanning Tree: Assuming all edge weights are positive, and since:
+
+	log(a * b) = log(a) + log(b)
+	
+then, the MST of a tree in which the weights of the edges are replaced by their logarithm, corresponds
+to the MIN PRODUCT SPANNING TREE
+
+
+SHORTEST PATHS
+==============
+
+The SP from s to t in an unweighted graph can be computed usinf a BFS from s. 
+
+For weighted graphs, Dikjstra is the algorithm of choice.
+
+Dijkstra operates in a series of rounds; at each round, it computes the shortest path from the source to some vertex, 
+that is, it picks a vertex x that minimizes d(s, vi) + w(vi, x) OVER ALL UNFINISHED vertices 1 <= i <= n.
+
+The basic idea of Dijkstra is very similar to the underlying idea of Prim's MST algorithm. The difference between them is
+on the desirability of a vertex; in the MST case, we care only about the weight of the edge between two nodes and
+assign to a given vertex the weight of the minimum-weight edge among all edges that are incident on it. In Dijkstra,
+the value assigned to a vertex captures the weight of the whole path from the source.
+
+As implemented, the complexity is O(n^2).
+
+It works correctly only on graphs with non-negative edge weights.
+
+Note: Floy's algorithm works with negative-weight edges, but does not work if there are negative-weight cycles. 
+
+FLOYD-WARSHALL ALL-PAIRS SHORTEST PATHS
+=======================================
+
+Runs in O(n^3) time and O(n^2) space.
+
+It can be used to compute the transitive closure of a graph. When analyzing a directed graph, we are often interested in 
+determining which vertices are reachable from a given node.
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+

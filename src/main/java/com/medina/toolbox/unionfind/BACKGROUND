@@ -1,0 +1,36 @@
+UNION-FIND DATA STRUCTURE
+=========================
+
+A set partition is a partitioning of the elements of some universal set into a collection of disjoint subsets.
+
+Each element belong to exactly one subset.
+
+For some algorithms, such as Kruskal's MST, we need a data structure that efficiently supports the following 
+operations:
+
+1. sameComponent(v1, v2): do vertices v1 and v2 belong to the same component?
+
+2. mergeComponents(v1, v2): given a pair of vertices, merge their corresponding components into one component.
+
+The UNION-FIND data structure represents each subset as a BACKWARDS TREE, with POINTERS from nodes to their parents.
+
+Each node in the structure contains a set data member, and the name of the set is taken from the key at the root 
+of the BACKWARDS TREE.
+
+Keep also the NUMBER OF ELEMENTS in the subtree rooted at each vertex v.
+
+GOAL: minimize the time for executing any sequence of unions and finds.
+====
+
+Tree structures can become very unbalance --> MUST limit size of trees
+
+We have a choice with respect to which component tree becomes the root of the combined tree on a merge operation.
+
+Choose the larger tree to remain as the root of the combined tree, by making the smaller subtree a child of the larger tree's 
+node. In this way, the height of all nodes in the larger subtree remain the same, while the height of the nodes in the
+smaller subtree increase by one. 
+
+
+
+
+
