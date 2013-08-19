@@ -70,10 +70,10 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-      <dependency>
-      	<groupId>junit</groupId>
-      	<artifactId>junit</artifactId>
-      	<version>4.4</version>
-      </dependency>
-  </dependencies>
+		<dependency>
+      		  <groupId>junit</groupId>
+      		  <artifactId>junit</artifactId>
+      		  <version>4.4</version>
+		</dependency>
+	</dependencies>
 </project>
