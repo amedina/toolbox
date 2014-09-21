@@ -2,6 +2,7 @@ package com.medina.toolbox.dynamicprogramming;
 
 /*
  * https://github.com/simplyzhao/code-pearls-c/blob/master/pearl/coins_change.c
+ * http://www.algorithmist.com/index.php/Coin_Change
  */
 public class CoinChange {
 
