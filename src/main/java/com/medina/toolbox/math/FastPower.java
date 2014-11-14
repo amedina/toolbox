@@ -29,18 +29,23 @@ public class FastPower {
 		
 		int a = 8;
 		int n = 3;
-		int p = FastPower.fastPower(a, n);
-		System.out.println("P: " + p);
+		long p = FastPower.fastPower(a, n);
+		System.out.println("a: " + a + " n: " + n + " P: " + p);
 
 		a = 2;
 		n = 2;
 		p = FastPower.fastPower(a, n);		
-		System.out.println("P: " + p);
+		System.out.println("a: " + a + " n: " + n + " P: " + p);
 		
 		a = 3;
 		n = 2;
 		p = FastPower.fastPower(a, n);		
-		System.out.println("P: " + p);
+		System.out.println("a: " + a + " n: " + n + " P: " + p);
+		
+		a = 2;
+		n = 40;
+		p = FastPower.fastPower(a, n);		
+		System.out.println("a: " + a + " n: " + n + " P: " + p);
 	}
 
 }

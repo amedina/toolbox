@@ -1,6 +1,5 @@
 package com.medina.toolbox.dynamicprogramming;
 
-import java.util.ArrayList;
 
 public class BinomialCoefficients {
 
@@ -19,7 +18,7 @@ public class BinomialCoefficients {
 		}
 		
 		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= i; j++) {
+			for (int j = 1; j <= i; j++) {				
 				bc[i][j] = bc[i - 1][j] + bc[i - 1][j - 1];
 			}
 		}		
@@ -32,7 +31,23 @@ public class BinomialCoefficients {
 	
 	public static void main(String[] args) {
 
+		BinomialCoefficients b = new BinomialCoefficients(10);
 		
+		int n = 5;
+		int k = 1;
+				
+		System.out.printf("BC[%d][%d] = %d\n", n, k, b.binomialCoeff(n, k));
+		
+		n = 5;
+		k = 2;			
+		System.out.printf("BC[%d][%d] = %d\n", n, k, b.binomialCoeff(n, k));
+		
+		n = 5;
+		k = 3;			
+		System.out.printf("BC[%d][%d] = %d\n", n, k, b.binomialCoeff(n, k));
+		n = 5;
+		k = 4;			
+		System.out.printf("BC[%d][%d] = %d\n", n, k, b.binomialCoeff(n, k));
 	}
 
 }

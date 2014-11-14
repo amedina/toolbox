@@ -16,7 +16,6 @@ public class TraversalProceduresBipartite implements TraversalProcedures {
 	Graph g;
 	GraphTraversal gt;
 	
-	@Override
 	public void init(Graph g, GraphTraversal gt) {
 		color = new int[g.getNumVertices()];
 		for (int i = 0; i < g.getNumVertices(); i++) {
@@ -27,17 +26,14 @@ public class TraversalProceduresBipartite implements TraversalProcedures {
 		this.gt  = gt;
 	}
 	
-	@Override
 	public boolean processVertexEarly(int v) {  
 		return false;
 	}
 	
-	@Override
 	public boolean processVertexLate(int v) {
 		return false;
 	}
 	
-	@Override
 	public boolean processEdge(int x, int y) {
 		
 		if (color[x] == color[y]) {

@@ -1,11 +1,11 @@
 package com.medina.toolbox.strings;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class StringMatchSimple {
 
-	private static Logger log = LoggerFactory.getLogger(StringMatchSimple.class);
+//	private static Logger log = LoggerFactory.getLogger(StringMatchSimple.class);
 		
 	
 	/*
@@ -81,7 +81,7 @@ public class StringMatchSimple {
 		String t = "abc";
 		String s = "xyz abzxy axab xabc xyz";
 		
-		log.info("s: {} t: {} i: {}", new Object[] {s, t, StringMatchSimple.stringMatch(s, t)});
+		System.out.println("s: " + s + " t: " + t + " i: " + StringMatchSimple.stringMatch(s, t));
 
 	}
 

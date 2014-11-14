@@ -1,4 +1,4 @@
-package com.medina.TOREVIEWFORGOOGLE;
+package com.medina.toreview;
 
 import java.io.BufferedReader;
 import java.io.IOException;

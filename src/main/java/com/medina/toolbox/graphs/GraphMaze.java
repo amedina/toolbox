@@ -197,8 +197,7 @@ public class GraphMaze {
 			this.j = j;
 			this.val = val;			
 		}
-		
-		@Override
+				
 		public int compareTo(Coordinate other) {
 			
 			if ((this.i == other.i) && (this.j == other.j)) {

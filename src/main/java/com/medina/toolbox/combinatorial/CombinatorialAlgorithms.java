@@ -49,7 +49,7 @@ public class CombinatorialAlgorithms {
 	
 	public void computeRankingDriver() {
 		
-		String s = "STRING";
+		String s = "ZYXWVU";
 		int rank = computeRank(s);
 		System.out.printf("s: %s R: %d", s, rank);
 		

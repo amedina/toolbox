@@ -15,7 +15,6 @@ public class TraversalProceduresTopologicalSorting implements TraversalProcedure
 	/* Specific to this TraversalProcedures imeplementation */
 	private DepthFirstSearch dfs = null;
 	
-	@Override
 	public void init(Graph g, GraphTraversal gt) {
 		this.g = g;
 		this.gt = gt;		
@@ -23,18 +22,15 @@ public class TraversalProceduresTopologicalSorting implements TraversalProcedure
 		this.s = new Stack<Integer>();
 	}
 	
-	@Override
 	public boolean processVertexEarly(int v) {  
 		return false;
 	}
 	
-	@Override
 	public boolean processVertexLate(int v) {
 		s.push(v);
 		return false;
 	}
 	
-	@Override
 	public boolean processEdge(int x, int y) {
 		 processEdge(x, y, dfs);
 		 return false;

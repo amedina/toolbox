@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 
 public class BigIntegerGCD {
 
-	private static Logger log = LoggerFactory.getLogger(BigIntegerGCD.class);
+//	private static LogManager log = LoggerFactory.getLogger(BigIntegerGCD.class);
 
 	private static BigInteger TWO = new BigInteger("2");
 
@@ -84,10 +84,10 @@ public class BigIntegerGCD {
 
 	public static void main(String[] args) {
 
-		BigInteger x = new BigInteger("540");
-		BigInteger y = new BigInteger("129");
+		BigInteger x = new BigInteger("12");
+		BigInteger y = new BigInteger("6");
 
-		log.info("x: {} y: {} GCD: {}", new Object[] { x, y, GCD(x, y) });
+		System.out.println("x: " + x + " y: " + y + " GCD: " + GCD(x, y));
 
 	}
 

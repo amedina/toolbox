@@ -1,13 +1,9 @@
 package com.medina.toolbox.arrays;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.medina.toolbox.strings.BaseConversion;
 
 public class Permutations {
-
-	private static Logger log = LoggerFactory.getLogger(BaseConversion.class);
 	
 	/*
 	 * Given an Array of n elements and a permutation P, compute P(A) using
@@ -42,41 +38,45 @@ public class Permutations {
 	}
 	
 	/*
-	 * Given an array A of integers representing a permutation P, update A 
+	 * Given an array P of integers representing a permutation P, update A 
 	 * to represent P^(-1) using constant space complexity 
 	 */
 	public static int[] invertPermutation(int[] A) {
-		
-		
+				
 		return null;
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void printArray(int[] a, String name) {
+		System.out.print(name + ": ");
+	    for (int o : a) {	        
+	    	System.out.print(o + " ");
+		}
+		System.out.println("");		
+	}
 	
-
+	public static void main(String[] args) {
+	 				
+		String stringA = "abcdefgh";
+		char[] A = stringA.toCharArray();
 		int[] P = new int[] {2, 3, 0, 1, 7, 4, 6, 5};
-		char[] A = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 		
-		log.info("A: {}", A);
-		log.info("P: {}", P);
+		System.out.println("A: " + stringA);
+		Permutations.printArray(P, "P");
 		
 		char[] R = permuteCharArray(A, P);
-		
-		
-		log.info("Permutation #1: {}", R);
-		
-		
+	
+		System.out.println("Permutation #1: " + String.valueOf(R));
+				
 		P = new int[] {7, 6, 5, 4, 3, 2, 1, 0};
-		A = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+		A = stringA.toCharArray();
 		
-		log.info("A: {}", A);
-		log.info("P: {}", P);
-		
+		System.out.println("A: " + stringA);
+		Permutations.printArray(P, "P");
+
 		R = permuteCharArray(A, P);
-		
-		
-		log.info("Permutation #2: {}", R);
+				
+		System.out.println("Permutation #2: " + String.valueOf(R));
 
 	}
 

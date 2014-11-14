@@ -3,6 +3,7 @@ package com.medina.toolbox.hashing;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Hashing {
 
@@ -17,9 +18,8 @@ public class Hashing {
 	
 	public static int NUMOFCHARS = 26;
 	
-	public static int charBasedHashFunctionOne(String s) {
+	public static int charBasedHashFunctionOne(String s, int m) {
 		
-		int m = 17;
 		int h =  0;
 		for (int i = 0; i < s.length(); i++) {
 			h += Math.pow(NUMOFCHARS,  s.length()) * s.charAt(i);
@@ -30,9 +30,8 @@ public class Hashing {
 	}
 	
 	
-	public static int charBasedHashFunctionTwo(String s) {
+	public static int charBasedHashFunctionTwo(String s, int m) {
 		
-		int m = 17;
 		int MULT = 997;
 		int h = 0;
 				
@@ -61,16 +60,27 @@ public class Hashing {
 
 	}
 
-	public void charBasedHashFunctioneTest() {
+	public static void charBasedHashFunctioneTest() {
 		
 		List<String> words = getListOfWords();
+		Random a = new Random();
 		
-		for (String word : words) {
-			
-			int idx = charBasedHashFunctionOne(word);
-			System.out.printf("W: %s i: %d\n", word, idx);
-			
+		char[] s = "abcdefghijklmnopqrstuvxywz".toCharArray();
+		
+		int i = 0;
+		while (i < 100) {
+			String ns = String.valueOf(Math.abs(a.nextInt()));
+			int idx = charBasedHashFunctionTwo(ns, 17);
+			System.out.printf("W: %s idx: %d\n", ns, idx);
+			i += 1;
 		}
+		
+//		for (String word : words) {
+//			
+//			int idx = charBasedHashFunctionOne(word);
+//			System.out.printf("W: %s i: %d\n", word, idx);
+//			
+//		}
 	}
 
 	/* Solution #1: Hash-based */
@@ -85,7 +95,7 @@ public class Hashing {
 		/* Compute the HASH VALUES for each word; insert into HASH TABLE */
 		for (int i = 0; i < words.size(); i++) {
 			/* Hash Code */
-			int idx = charBasedHashFunctionTwo(words.get(i));
+			int idx = charBasedHashFunctionOne(words.get(i), 17);			
 			/* Insert in proper BUCKET */
 			hashTable.get(idx).add(words.get(i));			
 		}
@@ -122,6 +132,7 @@ public class Hashing {
 		for (int i = 0; i < aux.length; i++) {
 			System.out.println(words.get(aux[i].index));
 		}
+
 	}
 	
 	/*
@@ -172,7 +183,6 @@ public class Hashing {
 		}
 
 
-		@Override
 		public int compareTo(Object o) {
 			WordElement other = (WordElement)o;
 			return word.compareTo(other.word);
@@ -181,8 +191,15 @@ public class Hashing {
 	
 	public static void main(String[] args) {
 
-		List<String> words = Hashing.getListOfWords();
-		Hashing.printAnagramsTogetherSolutionOne(words);
+		Hashing h = new Hashing();
+		
+		Hashing.charBasedHashFunctioneTest();
+//		List<String> words = Hashing.getListOfWords();
+//		System.out.println("Solution #1: Hashing");
+//		Hashing.printAnagramsTogetherSolutionOne(words);
+//		System.out.println("Solution #2: Sorting");
+//		h.printAnagramsTogetherSolutionTwo(words);
+		
 		
 
 	}

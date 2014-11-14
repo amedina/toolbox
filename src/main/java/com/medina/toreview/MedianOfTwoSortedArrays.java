@@ -1,4 +1,4 @@
-package com.medina.TOREVIEWFORGOOGLE;
+package com.medina.toreview;
 
 public class MedianOfTwoSortedArrays {
 

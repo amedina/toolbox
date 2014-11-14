@@ -66,7 +66,11 @@ public class ReversePolishNotation {
 				s.push(res);
 				
 			}else {
-				s.push(Integer.valueOf(symbol));
+				try {
+					s.push(Integer.valueOf(symbol));
+				}catch(java.lang.NumberFormatException e) {
+					throw new IllegalArgumentException("Symbol: " + symbol + " Is not a number!");
+				}
 			}
 		}
 		
@@ -78,7 +82,7 @@ public class ReversePolishNotation {
 
 		ReversePolishNotation rpn  = new ReversePolishNotation();
 		
-		String exp = "5,4,+,5,6,6,*,-,+";
+		String exp = "5,4,+,5,6,6,*,-,+,3,*";
 		
 		int res = rpn.eval(exp);
 		

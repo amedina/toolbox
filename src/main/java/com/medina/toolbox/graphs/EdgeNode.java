@@ -32,7 +32,6 @@ public class EdgeNode implements Comparable<EdgeNode> {
 		this.next = next;
 	}
 	
-	@Override
 	public int compareTo(EdgeNode o) {
 		
 		if (this.weight - o.weight < 0.0001) {

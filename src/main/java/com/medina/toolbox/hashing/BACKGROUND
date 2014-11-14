@@ -16,15 +16,11 @@ HASH FUNCTION SUITABLE FOR WORDS IN A DICTIONARY
 =================================================
 
 (1) Should examine all the characters in a string/word.
-
-(2) It should give a large range of values''(3) Should not let any particular character
-to dominate the resulting code
-
-(2) Should a "ROLLING HASH FUNCTION", that is, one in which if a character is deleted 
+(2) It should give a large range of values
+(3) Should not let any particular character to dominate the resulting code
+(4) Should be a "ROLLING HASH FUNCTION", that is, one in which if a character is deleted 
 from the front of the string and another one is added at the end, the new hash code 
 can be computed in CONSTANT TIME
-
-
 
 
 EFFCIENT MATCHING via HASHING: RABIN-KARP ALGORITHM
